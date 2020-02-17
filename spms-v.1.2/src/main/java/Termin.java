@@ -11,12 +11,12 @@ public class Termin{
 		double ende;
 		String beschreibung;
 		public Termin() {}
-		public Termin(String t,String d,double beg,double e,String besch){
-			titel = t;
-			datum = d;
-			beginn = beg;
-			ende = e;
-			beschreibung = besch;
+		public Termin(String titel,String datum,double beginn,double ende,String beschreibung){
+			this.titel = titel;
+			this.datum = datum;
+			this.beginn = beginn;
+			this.ende = ende;
+			this.beschreibung = beschreibung;
 		}
 		public void setTitel(String titel) {
 			this.titel = titel;

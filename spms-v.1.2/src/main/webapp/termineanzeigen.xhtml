@@ -6,6 +6,41 @@
 		<title>Termine anzeigen</title>
 	</h:head>
 	<body>
-	
+				<div id="header">
+			<ui:insert name="header">
+			
+			</ui:insert>
+		</div>
+		<div id="content">
+			<ui:insert name="content">
+				<h:dataTable var="termin" value="#{accountHandler.accounts}" rowClasses="odd,even" headerClass="header">
+					<h:column>
+						<f:facet name="header">Titel</f:facet>
+						<h:outputText value="#{Termin.titel}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Datum</f:facet>
+						<h:outputText value="#{Termin.datum}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Beginn</f:facet>
+						<h:outputText value="#{Termin.beginn}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Ende</f:facet>
+						<h:outputText value="#{Termin.ende}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Beschreibung</f:facet>
+						<h:outputText value="#{Termin.beschreibung}" />
+					</h:column>
+				</h:dataTable>
+			</ui:insert>
+		</div>
+		<div id="footer">
+			<ui:insert name="footer">
+			
+			</ui:insert>
+		</div>
 	</body>
-	</html>
+</html>
