@@ -1,10 +1,9 @@
-package Datenbank;
+package datenbank;
 
 import java.io.*;
-import java.util.*;
 import javax.persistence.*;
 
-@NamedQuery(name = "SelectAccount", value = "Select k from Account k")
+@NamedQuery(name = "SelectAccount", query = "Select k from Account k")
 @Entity
 public class Account implements Serializable{
 	

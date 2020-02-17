@@ -6,11 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.*;
 import javax.persistence.*;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import datenbank.Account;
 
@@ -53,8 +48,8 @@ public class AccountHandler {
 		try {
 			utx.begin();
 		} catch (Exception exc) {}
-		kunden = new ListDataModel<Kunde>();
-		kunden.setWrappedData(em.createNamedQuery("SelectAccount").getResultList());
+		accounts = new ListDataModel<Account>();
+		accounts.setWrappedData(em.createNamedQuery("SelectAccount").getResultList());
 		try {
 			utx.commit();
 		} catch (Exception exc) {}
@@ -66,7 +61,7 @@ public class AccountHandler {
 		} catch (Exception exc) {}
 		tempAccount = em.merge(tempAccount);
 		em.persist(tempAccount);
-		kunden.setWrappedData(em.createNamedQuery("SelectAccount").getResultList());
+		accounts.setWrappedData(em.createNamedQuery("SelectAccount").getResultList());
 		try {
 			utx.commit();
 		} catch (Exception exc) {}
