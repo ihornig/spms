@@ -1,0 +1,13 @@
+
+<h:dataTable var="person" value="#{accountHandler.accounts}"
+	rowClasses="odd,even" headerClass="header">
+	<f:facet name="header">Personen</f:facet>
+	<h:column>
+		<f:facet name="header">Username</f:facet>
+		<h:outputText value="#{person.username}" />
+	</h:column>
+	<h:column>
+		<f:facet name="header">Password</f:facet>
+		<h:outputText value="#{person.password}" />
+	</h:column>
+</h:dataTable>
