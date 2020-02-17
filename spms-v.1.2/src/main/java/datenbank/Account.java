@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 @NamedQuery(name = "SelectAccount", query = "Select k from Account k")
 @Entity
+
 public class Account implements Serializable{
 	
 	@Id
