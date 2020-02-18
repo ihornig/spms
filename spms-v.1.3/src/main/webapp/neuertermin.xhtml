@@ -7,29 +7,52 @@
 	</h:head>
 	<body>
 	<h1>Legen Sie hier einen neuen Termin an</h1>
-	<form>
-	<label for="titel">
-		Titel:<br></br>
-		<input id="titel" name="titel"></input>
-	</label><br></br>
-	<label for="datum">
-		Datum:<br></br>
-		<input id="datum" name="datum"></input>
-	</label><br></br>
-	<label for="beginn">
-		Beginn:<br></br>
-		<input id="beginn" name="beginn"></input>
-	</label><br></br>
-	<label for="ende">
-		Ende:<br></br>
-		<input id="ende" name="ende"></input>
-	</label><br></br>
-	<label for="beschreibung">
-		Beschreibung:<br></br>
-		<input id="beschreibung" name="beschreibung"></input>
-	</label><br></br>
-	<input type="submit" value="Speichern"></input><br></br><br></br>
-	<a href="termineanzeigen.xhtml">Termine anzeigen</a>
-	</form>
+		<div id="content">
+			<ui:insert name="content">
+				<h:dataTable var="termin" value="#{TerminHandler.termine}" rowClasses="odd,even" headerClass="header">
+					<h:column>
+						<label>
+						<span style="width:100px; display: inline-block;">Titel:</span>
+						<input id="titel" name="titel"></input><br></br>
+						<br></br>
+						</label>
+						<h:inputText id="titel" value="#{TerminHandler.tempTermin.titel}"/>
+					</h:column>
+					<h:column>
+						<label>
+						<span style="width:100px; display: inline-block;">Datum:</span>
+						<input id="datum" name="datum"></input><br></br>
+						<br></br>
+						</label>
+						<h:inputText id="datum" value="#{TerminHandler.tempTermin.datum}"/>
+					</h:column>
+					<h:column>
+						<label>
+						<span style="width:100px; display: inline-block;">Beginn:</span>
+						<input id="beginn" name="beginn"></input><br></br>
+						<br></br>
+						</label>
+						<h:inputText id="beginn" value="#{TerminHandler.tempTermin.beginn}"/>
+					</h:column>
+					<h:column>
+						<label>
+						<span style="width:100px; display: inline-block;">Ende:</span>
+						<input id="ende" name="ende"></input><br></br>
+						<br></br>
+						</label>
+						<h:inputText id="ende" value="#{TerminHandler.tempTermin.ende}"/>
+					</h:column>
+					<h:column>
+						<label>
+						<span style="width:100px; display: inline-block;">Beschreibung:</span>
+						<input id="beschreibung" name="beschreibung"></input><br></br>
+						<br></br>
+						</label>
+						<h:inputText id="beschreibung" value="#{TerminHandler.tempTermin.beschreibung}"/>
+					</h:column>
+				</h:dataTable>
+				<button onclick="#{TerminHandler.tempTermin.speichern()}" type="button">Termin speichern</button>
+			</ui:insert>
+		</div>
 	</body>
 </html>
