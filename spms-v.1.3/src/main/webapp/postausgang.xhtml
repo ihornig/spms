@@ -6,6 +6,21 @@
 		<title>Postausgang</title>
 	</h:head>
 	<body>
-	
+	<ui:insert name="content">
+				<h:dataTable var="nachricht" value="#{NachrichtenHandler.nachricht}" rowClasses="odd,even" headerClass="header">
+					<h:column>
+						<f:facet name="header">Empfänger</f:facet>
+						<h:outputText value="#{Nachricht.empfänger}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Betreff</f:facet>
+						<h:outputText value="#{Nachricht.betreff}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Inhalt</f:facet>
+						<h:outputText value="#{Nachricht.inhalt}" />
+					</h:column>
+				</h:dataTable>
+			</ui:insert>	
 	</body>
 </html>
