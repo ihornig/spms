@@ -4,12 +4,17 @@ import javax.persistence.*;
 @NamedQuery(name = "SelectTermin", query = "Select t from Termin t")
 @Entity
 
-public class Termin{
-		String titel;
-		String datum;
-		double beginn;
-		double ende;
-		String beschreibung;
+public class Termin implements Serializable{
+		@Id
+		@GeneratedValue(strategy = GenerationType.AUTO)
+		private Integer id;	
+		
+		private String titel;
+		private String datum;
+		private double beginn;
+		private double ende;
+		private String beschreibung;
+		
 		public Termin() {}
 		public Termin(String titel,String datum,double beginn,double ende,String beschreibung){
 			this.titel = titel;

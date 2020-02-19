@@ -13,11 +13,11 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import java.util.*;
-import datenbank.Termin;
+import datenbank.Nachricht;
 
-@ManagedBean(name = "TerminHandler")
+@ManagedBean(name = "NachrichtenHandler")
 @SessionScoped
-public class TerminHandler {
+public class NachrichtenHandler {
 
 	@PersistenceContext
 	private EntityManager em;
@@ -25,27 +25,27 @@ public class TerminHandler {
 	@Resource
 	private UserTransaction utx;
 	
-	private DataModel<Termin> termine;
-	private Termin tempTermin = new Termin();
+	private DataModel<Nachricht> nachrichten;
+	private Nachricht tempNachricht = new Nachricht();
 	
-	public DataModel<Termin> getTermine(){
-		return termine;
+	public DataModel<Nachricht> getNachrichten(){
+		return nachrichten;
 	}
 	
-	public void setTermin(DataModel<Termin> termine) {
-		this.termine = termine;
+	public void setNachricht(DataModel<Nachricht> nachrichten) {
+		this.nachrichten = nachrichten;
 	}
 	
-	public void setTempTermin(Termin termin) {
-		this.tempTermin = termin;
+	public void setTempNachricht(Nachricht nachricht) {
+		this.tempNachricht = nachricht;
 	}
 	
-	public Termin getTempTermin() {
-		return tempTermin;
+	public Nachricht getTempNachricht() {
+		return tempNachricht;
 	}
 	
 	public void neu() {
-		tempTermin = new Termin();
+		tempNachricht = new Nachricht();
 		speichern();
 	}
 	
@@ -54,8 +54,8 @@ public class TerminHandler {
 		try {
 			utx.begin();
 		} catch (Exception exc) {}
-		termine = new ListDataModel<Termin>();
-		termine.setWrappedData(em.createNamedQuery("SelectTermin").getResultList());
+		nachrichten = new ListDataModel<Nachricht>();
+		nachrichten.setWrappedData(em.createNamedQuery("SelectNachricht").getResultList());
 		try {
 			utx.commit();
 		} catch (Exception exc) {}
@@ -65,9 +65,9 @@ public class TerminHandler {
 		try {
 			utx.begin();
 		} catch (Exception exc) {}
-		tempTermin = em.merge(tempTermin);
-		em.persist(tempTermin);
-		termine.setWrappedData(em.createNamedQuery("SelectTermin").getResultList());
+		tempNachricht = em.merge(tempNachricht);
+		em.persist(tempNachricht);
+		nachrichten.setWrappedData(em.createNamedQuery("SelectNachricht").getResultList());
 		try {
 			utx.commit();
 		} catch (Exception exc) {}

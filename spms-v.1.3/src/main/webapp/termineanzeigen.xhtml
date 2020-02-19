@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
-	<h:head>
-		<title>Termine anzeigen</title>
-	</h:head>
-	<body>
-			<ui:insert name="content">
+	    <head>
+	<title>Meine Termine</title>
+</head>
+<body>
+	<ui:insert name="content">
 				<h:dataTable var="termin" value="#{TerminHandler.termine}" rowClasses="odd,even" headerClass="header">
 					<h:column>
 						<f:facet name="header">Titel</f:facet>
@@ -29,6 +29,6 @@
 						<h:outputText value="#{Termin.beschreibung}" />
 					</h:column>
 				</h:dataTable>
-			</ui:insert>
+			</ui:insert>	
 	</body>
 </html>
