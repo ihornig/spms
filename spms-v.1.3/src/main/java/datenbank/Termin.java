@@ -1,10 +1,12 @@
+package datenbank;
+
 import java.io.*;
 import javax.persistence.*;
 
 @NamedQuery(name = "SelectTermin", query = "Select t from Termin t")
 @Entity
 
-public class Termin implements Serializable{
+public class Termin{
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		private Integer id;	
@@ -54,4 +56,3 @@ public class Termin implements Serializable{
 			return beschreibung;
 		}
 	}
-}
