@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
-	<head>
-		<title>Nachricht senden</title>
+	<h:head>
+		<title>Termin entfernen</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 <style>
@@ -71,7 +71,7 @@ body {
   display: block;
 }
 </style>
-	</head>
+</h:head>
 	<h:body>
 	<div class="navbar">
   <a href="startseite.xhtml">Startseite</a>
@@ -92,32 +92,25 @@ body {
     <div class="dropdown-content">
       <a href="termineanzeigen.xhtml">Meine Termine</a>
       <a href="neuertermin.xhtml">Termin anlegen</a>
-      <a href="neuertermin.xhtml">Termin entfernen</a>
+      <a href="terminentfernen.xhtml">Termin entfernen</a>
     </div>
     </div>
 </div><br></br>
-	<h1>Nachricht senden</h1>
-	<div id="header">
+	<h1>Termin entfernen</h1>
+		<div id="header">
 			<ui:insert name="header">
 			</ui:insert>
 		</div>
 		<div id="content">
 			<ui:insert name="content">
 			<h:form>
-					<h:panelGrid var="nachricht" value="#{Nachricht}" columns="2" headerClass="header" footerClass="footer">
-						<h:outputLabel value="Empfaenger" for="empfaenger" /><br></br>
+					<h:panelGrid var="termin" value="#{Termin}" columns="2" headerClass="header" footerClass="footer">
+						<h:outputLabel value="Titel" for="titel" /><br></br>
 						<h:panelGroup>
-							<h:inputText id="empfaenger" value="#{NachrichtenHandler.tempNachricht.empfaenger}"/>
+							<h:inputText id="titel" value="#{TerminHandler.tempTermin.titel}"/>
 						</h:panelGroup><br></br>
-						<h:outputLabel value="Betreff" for="betreff" /><br></br>
-						<h:panelGroup>
-							<h:inputText id="betreff" value="#{NachrichtenHandler.tempNachricht.betreff}"/>
-						</h:panelGroup><br></br><br></br>
-						<h:panelGroup>
-							<textarea id ="inhalt" cols="60" rows="15">Geben Sie hier Ihre Nachricht ein ...</textarea>
-						</h:panelGroup>
 					</h:panelGrid><br></br>
-					<h:commandButton action="#{NachrichtenHandler.speichern()}" value="Senden"/>
+					<h:commandButton action="#{TerminHandler.entfernen(titel)}" value="Termin entfernen"/>
 				</h:form>
 			</ui:insert>
 		</div>

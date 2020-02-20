@@ -27,10 +27,6 @@
 						<h:panelGroup>
 							<h:inputText id="password" value="#{accountHandler.tempAccount.password}"/>
 						</h:panelGroup>
-						<h:outputLabel value="Token" for="rolle"/>
-						<h:panelGroup>
-							<h:inputText id="rolle" value="#{accountHandler.tempAccount.rolle}" />
-						</h:panelGroup>
 					</h:panelGrid>
 					<h:commandButton action="#{accountHandler.speichern()}" value="Speichern"/>
 				</h:form>

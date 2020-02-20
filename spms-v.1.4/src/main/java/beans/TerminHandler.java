@@ -67,4 +67,7 @@ public class TerminHandler {
 		} catch (Exception exc) {}
 	}
 	
+	public void entfernen(String titel) {
+	
+	}
 }

@@ -2,12 +2,103 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
-	    <head>
+	    <h:head>
 	<title>Meine Termine</title>
-</head>
-<body>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</h:head>
+	<h:body>
+	<div class="navbar">
+  <a href="startseite.xhtml">Startseite</a>
+  <div class="dropdown">
+    <button class="dropbtn">Meine Nachrichten 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="posteingang.xhtml">Posteingang</a>
+      <a href="postausgang.xhtml">Postausgang</a>
+      <a href="neuenachricht.xhtml">Neue Nachricht</a>
+    </div>
+    </div>
+      <div class="dropdown">
+    <button class="dropbtn">Meine Termine
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="termineanzeigen.xhtml">Meine Termine</a>
+      <a href="neuertermin.xhtml">Termin anlegen</a>
+      <a href="terminentfernen.xhtml">Termin entfernen</a>
+    </div>
+    </div>
+</div><br></br>
+	<h1>Meine Termine</h1>
 	<ui:insert name="content">
-				<h:dataTable var="termin" value="#{TerminHandler.termine}" rowClasses="odd,even" headerClass="header">
+	<h:dataTable var="termin" value="#{TerminHandler.termine}" rowClasses="odd,even" headerClass="header">
 					<h:column>
 						<f:facet name="header">Titel</f:facet>
 						<h:outputText value="#{Termin.titel}" />
@@ -29,6 +120,6 @@
 						<h:outputText value="#{Termin.beschreibung}" />
 					</h:column>
 				</h:dataTable>
-			</ui:insert>	
-	</body>
+			</ui:insert>
+	</h:body>
 </html>
