@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	<h:head>
+		<title>
+			<ui:insert name="title">
+				Account Management
+			</ui:insert>
+		</title>
+	</h:head>
+	<h:body>
+	<f:event listener="#{loginHandler.checkRangAdmin}" type="preRenderView" />
+		<div id="header">
+			<ui:insert name="header">
+			
+			</ui:insert>
+		</div>
+		<div id="content">
+			<ui:insert name="content">
+			
+				<h1>Accounts ausgeben</h1>
+				<h:dataTable var="person" value="#{accountHandler.accounts}" rowClasses="odd,even" headerClass="header">
+					<f:facet name="header">Personen</f:facet>
+					<h:column>
+						<f:facet name="header">Username</f:facet>
+						<h:outputText value="#{person.username}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Password</f:facet>
+						<h:outputText value="#{person.password}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Rolle</f:facet>
+						<h:outputText value="#{person.rolle}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Gruppen</f:facet>
+						<h:selectOneMenu value="temp">
+							<f:selectItems value="#{person.gruppen}"/>
+						</h:selectOneMenu>
+					</h:column>
+				</h:dataTable>
+			
+				<h1>Account löschen</h1>
+				<h:form>
+					<h:panelGrid columns="2">
+						<h:selectOneMenu value="#{accountHandler.userName}">
+							<f:selectItems value="#{accountHandler.nameholder}"/>
+						</h:selectOneMenu>
+						<h:commandButton action="#{accountHandler.accountLoeschen()}" value="Löschen" />
+					</h:panelGrid>
+				</h:form>
+				
+				<h1>Account bearbeiten</h1>
+				
+				<h1>Rolle ändern</h1>
+				<h:form>
+					<h:panelGrid columns="2">	
+						<h:outputLabel value="Benutzer"/>
+						<h:selectOneMenu value="#{accountHandler.userName}">
+							<f:selectItems value="#{accountHandler.nameholder}"/>
+						</h:selectOneMenu>
+						<h:outputLabel value="Rolle" />
+						<h:selectOneMenu value="#{accountHandler.groupName}">
+							<f:selectItem itemValue="user"/>
+							<f:selectItem itemValue="verwalter"/>
+							<f:selectItem itemValue="admin"/>
+						</h:selectOneMenu>
+						<h:commandButton action="#{accountHandler.rolleAendern()}" value="Ändern"/>
+					</h:panelGrid>
+				</h:form>
+				
+			</ui:insert>
+		</div>
+		<div id="footer">
+			<ui:insert name="footer">
+			
+			</ui:insert>
+		</div>
+	</h:body>
+</html>
