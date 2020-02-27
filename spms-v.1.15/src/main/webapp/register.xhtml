@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	<h:head>
+		<title>
+			<ui:insert name="title">
+				Neuer Account
+			</ui:insert>
+		</title>
+		<link rel="stylesheet" href="resource/login.css"/>
+	</h:head>
+	<h:body>
+		<f:event listener="#{loginHandler.checkLoggedInLogin}" type="preRenderView" />
+		<h1>SPMS</h1>
+		<h2>Simple Personal Management System</h2>
+		<div id="main">
+		<h:form id="formular">
+			<h:panelGrid var="account" value="#{Account}" columns="2" headerClass="header" footerClass="footer">
+				<h:outputLabel value="Benutzername" for="username" />
+				<h:panelGroup>
+					<h:inputText id="username" styleClass="login-form" value="#{accountHandler.tempAccount.username}" required="true" requiredMessage="Eingabe fehlt"/>
+					<h:message for="username"/>
+				</h:panelGroup>
+				<h:outputLabel value="Passwort" for="password" />
+				<h:panelGroup>
+					<h:inputText id="password" styleClass="login-form" value="#{accountHandler.tempAccount.password}" required="true" requiredMessage="Eingabe fehlt"/>
+					<h:message for="password"/>
+				</h:panelGroup>
+				<h:outputLabel value="Token" />
+				<h:panelGroup>
+					<h:inputText id="token" styleClass="login-form" value="#{accountHandler.tempAccount.rolle}"/>
+				</h:panelGroup>
+				<h:panelGroup><br></br></h:panelGroup>
+				<h:panelGroup><br></br></h:panelGroup>
+				<h:panelGroup>
+				<h:commandButton action="#{accountHandler.speichern()}" value="Speichern" styleClass="login"/>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:commandButton action="/login.xhtml?faces-redirect=true" value="Zum Login" styleClass="login"/>
+			</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+		</div>
+	</h:body>
+</html>
