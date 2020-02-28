@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	<h:head>
+		<title>
+			<ui:insert name="title">
+				Gruppenverwaltung
+			</ui:insert>
+		</title>
+	</h:head>
+	<h:body>
+		<f:event listener="#{loginHandler.checkRangVerwalter}" type="preRenderView" />
+		
+		<!-- Navigationsbar einfügen -->
+				
+			<h1>Vorhandene Gruppen</h1>
+			<h:dataTable var="gruppen" value="#{gruppeHandler.gruppen}" rowClasses="odd,even">
+				<f:facet name="header">Gruppen</f:facet>
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					<h:outputText value="#{gruppen.name}" />
+				</h:column>
+			</h:dataTable>		
+			<h1>Neue Gruppe Anlegen</h1>
+			<h:form>
+				<h:panelGrid var="gruppe" value="#{Gruppe}" columns="2">
+					<h:outputLabel value="Gruppenname" for="name" />
+					<h:panelGroup>
+						<h:inputText id="name" value="#{gruppeHandler.tempGruppe.name}" required="true" requiredMessage="Eingabe fehlt"/>
+						<h:message for="name" />
+					</h:panelGroup>
+				</h:panelGrid>
+				<h:commandButton action="#{gruppeHandler.speichern()}" value="Speichern"/>
+			</h:form>	
+			<h1>Gruppe Löschen</h1>
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Gruppe"/>
+					<h:panelGroup>
+						<h:selectOneMenu id="gruppenSelectMenu" value="#{gruppeHandler.name}">
+							<f:selectItems value="#{gruppeHandler.nameholder}"/>
+						</h:selectOneMenu>
+					</h:panelGroup>
+					<h:commandButton action="#{gruppeHandler.removeGroup()}" value="Löschen"/>
+				</h:panelGrid>
+			</h:form>	
+			<h1>Benutzer zu einer Gruppe hinzufügen</h1>
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Gruppe"/>
+					<h:panelGroup>
+						<h:selectOneMenu value="#{accountHandler.groupName}">
+							<f:selectItems value="#{gruppeHandler.nameholder}"/>
+						</h:selectOneMenu>
+					</h:panelGroup>
+					<h:outputLabel value="Benutzer" />
+					<h:panelGroup>
+						<h:selectOneMenu value="#{accountHandler.userName}">
+							<f:selectItems value="#{accountHandler.nameholder}"/>
+						</h:selectOneMenu>
+					</h:panelGroup>
+					<h:commandButton action="#{accountHandler.addToGroup()}" value="Hinzufügen"/> 
+				</h:panelGrid>
+			</h:form>			
+			<h1>Benutzer aus einer Gruppe entfernen</h1>
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Gruppe"/>
+					<h:panelGroup>
+						<h:selectOneMenu value="#{accountHandler.groupName}">
+							<f:selectItems value="#{gruppeHandler.nameholder}"/>
+						</h:selectOneMenu>
+					</h:panelGroup>
+					<h:outputLabel value="Benutzer" />
+					<h:panelGroup>
+						<h:selectOneMenu value="#{accountHandler.userName}">
+							<f:selectItems value="#{accountHandler.nameholder}"/>
+						</h:selectOneMenu>
+					</h:panelGroup>
+					<h:commandButton action="#{accountHandler.removeFromGroup()}" value="Entfernen"/>
+				</h:panelGrid>
+			</h:form>
+	</h:body>
+</html>
