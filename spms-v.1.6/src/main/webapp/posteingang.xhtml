@@ -72,7 +72,8 @@ body {
 }
 </style>
 </h:head>
-	<body>
+	<h:body>
+	<h1>Posteingang</h1>
 	<div class="navbar">
   <a href="startseite.xhtml">Startseite</a>
   <div class="dropdown">
@@ -96,6 +97,21 @@ body {
     </div>
     </div>
 </div><br></br>
-<h1>Posteingang</h1><br></br>
-	</body>
+<ui:insert name="content">
+	<h:dataTable var="nachricht" value="#{nachrichtenHandler.nachrichtenListe}" rowClasses="odd,even" headerClass="header">
+					<h:column>
+						<f:facet name="header">Empfaenger</f:facet>
+						<h:outputText value="#{nachricht.empfaenger}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Betreff</f:facet>
+						<h:outputText value="#{nachricht.betreff}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Inhalt</f:facet>
+						<h:outputText value="#{nachricht.inhalt}" />
+					</h:column>
+				</h:dataTable>
+			</ui:insert>
+	</h:body>
 </html>

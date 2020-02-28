@@ -16,7 +16,6 @@ import events.GroupDeletionEvent;
 @SessionScoped
 public class AccountHandler {
 
-	
 	public AccountHandler(){
 		tempAccount = new Account();
 	}

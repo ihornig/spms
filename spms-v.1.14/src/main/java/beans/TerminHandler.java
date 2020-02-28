@@ -28,6 +28,7 @@ public class TerminHandler {
 	private DataModel<Termin> termine;
 	private Termin tempTermin;
 	private String terminName;
+	private String gruppe;
 	
 	private List<String> nameholder = new ArrayList<String>();
 	
@@ -51,6 +52,14 @@ public class TerminHandler {
 			utx.commit();
 		} catch (Exception exc) {}
 		updateNameholder();
+	}
+	
+	public String getGruppe() {
+		return gruppe;
+	}
+	
+	public void setGruppe(String gruppe) {
+		this.gruppe = gruppe;
 	}
 	
 	public String getTerminName() {

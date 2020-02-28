@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
-<html
-xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
 	  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	  xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	  xmlns:jsf="http://xmlns.jcp.org/jsf">
 	<h:head>
 		<title>Postausgang</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
@@ -74,6 +74,7 @@ body {
 </style>
 </h:head>
 	<h:body>
+	<h1>Postausgang</h1>
 		<div class="navbar">
   <a href="startseite.xhtml">Startseite</a>
   <div class="dropdown">
@@ -97,20 +98,19 @@ body {
     </div>
     </div>
 </div><br></br>
-<h1>Postausgang</h1><br></br>
 <ui:insert name="content">
 				<h:dataTable var="nachricht" value="#{NachrichtenHandler.nachrichten}" rowClasses="odd,even" headerClass="header">
 					<h:column>
 						<f:facet name="header">Empfaenger</f:facet>
-						<h:outputText value="#{Nachricht.empfaenger}" />
+						<h:outputText value="#{nachricht.empfaenger}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Betreff</f:facet>
-						<h:outputText value="#{Nachricht.betreff}" />
+						<h:outputText value="#{nachricht.betreff}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Inhalt</f:facet>
-						<h:outputText value="#{Nachricht.inhalt}" />
+						<h:outputText value="#{nachricht.inhalt}" />
 					</h:column>
 				</h:dataTable>
 			</ui:insert>

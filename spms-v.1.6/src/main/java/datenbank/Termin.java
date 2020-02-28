@@ -6,19 +6,19 @@ import javax.persistence.*;
 @NamedQuery(name = "SelectTermin", query = "Select t from Termin t")
 @Entity
 
-public class Termin{
+public class Termin implements Serializable{
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		private Integer id;	
 		
 		private String titel;
 		private String datum;
-		private double beginn;
-		private double ende;
+		private String beginn;
+		private String ende;
 		private String beschreibung;
 		
 		public Termin() {}
-		public Termin(String titel,String datum,double beginn,double ende,String beschreibung){
+		public Termin(String titel,String datum,String beginn,String ende,String beschreibung){
 			this.titel = titel;
 			this.datum = datum;
 			this.beginn = beginn;
@@ -31,10 +31,10 @@ public class Termin{
 		public void setDatum(String datum) {
 			this.datum = datum;
 		}
-		public void setBeginn(double beginn) {
+		public void setBeginn(String beginn) {
 			this.beginn = beginn;
 		}
-		public void setEnde(double ende) {
+		public void setEnde(String ende) {
 			this.ende = ende;
 		}
 		public void setBeschreibung(String beschreibung) {
@@ -46,10 +46,10 @@ public class Termin{
 		public String getDatum() {
 			return datum;
 		}
-		public double getBeginn() {
+		public String getBeginn() {
 			return beginn;
 		}
-		public double getEnde() {
+		public String getEnde() {
 			return ende;
 		}
 		public String getBeschreibung() {

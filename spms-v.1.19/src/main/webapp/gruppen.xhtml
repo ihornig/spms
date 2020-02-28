@@ -38,6 +38,10 @@
 					<h:outputText value="#{termin.gruppe}" />
 				</h:column>
 				<h:column>
+					<f:facet name="header">Autor</f:facet>
+					<h:outputText value="#{termin.autor}" />
+				</h:column>
+				<h:column>
 					<f:facet name="header">Titel</f:facet>
 					<h:outputText value="#{termin.titel}" />
 				</h:column>
@@ -110,8 +114,10 @@
 			<br></br>
 		</h:panelGrid>
 		<br></br>
-		<h:commandButton action="#{TerminHandler.speichern()}"
-			value="Speichern" />
+		<h:commandButton actionListener="#{TerminHandler.speichern}"
+			value="Senden">
+			<f:attribute name="username" value="#{loginHandler.kunde.getUsername()}"/>
+		</h:commandButton>
 	</h:form>
 	<br></br>
 	<h:form>

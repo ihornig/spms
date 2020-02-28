@@ -6,71 +6,7 @@
 		<title>Nachricht senden</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-</style>
+<link rel="stylesheet" href="resource/navbarstyle.css"/>
 	</h:head>
 	<h:body>
 	<f:event listener="#{loginHandler.checkLoggedIn}" type="preRenderView" />
@@ -92,27 +28,19 @@ body {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="termineanzeigen.xhtml">Meine Termine</a>
+      <a href="gruppen.xhtml">Meine Termine</a>
       <a href="neuertermin.xhtml">Termin anlegen</a>
       <a href="neuertermin.xhtml">Termin entfernen</a>
     </div>
     </div>
 </div><br></br>
-	<div id="header">
-			<ui:insert name="header">
-			</ui:insert>
-		</div>
 		<div id="content">
 			<ui:insert name="content">
 			<h:form>
 					<h:panelGrid var="nachricht" value="#{Nachricht}" columns="2" headerClass="header" footerClass="footer">
-						<h:outputLabel value="Empfaenger" for="empfaenger" /><br></br>
+						<h:outputLabel value="Gruppe" for="gruppe" /><br></br>
 						<h:panelGroup>
-							<h:inputText id="empfaenger" value="#{NachrichtenHandler.tempNachricht.empfaenger}"/>
-						</h:panelGroup><br></br>
-						<h:outputLabel value="Betreff" for="betreff" /><br></br>
-						<h:panelGroup>
-							<h:inputText id="betreff" value="#{NachrichtenHandler.tempNachricht.betreff}"/>
+							<h:inputText id="gruppe" value="#{NachrichtenHandler.tempNachricht.gruppe}"/>
 						</h:panelGroup><br></br><br></br>
 						<h:outputLabel value="Inhalt" for="inhalt" /><br></br>
 						<h:panelGroup>
@@ -121,10 +49,6 @@ body {
 					</h:panelGrid><br></br>
 					<h:commandButton action="#{NachrichtenHandler.speichern()}" value="Senden"/>
 				</h:form>
-			</ui:insert>
-		</div>
-		<div id="footer">
-			<ui:insert name="footer">
 			</ui:insert>
 		</div>
 	</h:body>

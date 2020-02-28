@@ -1,6 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head><title>Startseite</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	  xmlns:jsf="http://xmlns.jcp.org/jsf">
+<h:head>
+<title>Startseite</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 <style>
@@ -68,9 +72,9 @@ body {
   display: block;
 }
 </style>
-</head>
-<body><br></br>
-<h1>Willkommen im SPMS !</h1><br></br>
+</h:head>
+<h:body>
+<h1>Willkommen im SPMS</h1>
 <div class="navbar">
   <a href="startseite.xhtml">Startseite</a>
   <div class="dropdown">
@@ -93,6 +97,6 @@ body {
       <a href="terminentfernen.xhtml">Termin entfernen</a>
     </div>
     </div>
-</div>
-</body>
+</div><br></br>
+</h:body>
 </html>

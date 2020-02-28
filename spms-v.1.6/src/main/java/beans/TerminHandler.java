@@ -40,7 +40,6 @@ public class TerminHandler {
 	
 	public void neu() {
 		tempTermin = new Termin();
-		speichern();
 	}
 	
 	@PostConstruct
@@ -65,6 +64,7 @@ public class TerminHandler {
 		try {
 			utx.commit();
 		} catch (Exception exc) {}
+		neu();
 	}
 	
 	public void entfernen(String titel) {

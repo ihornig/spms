@@ -3,6 +3,7 @@
 	  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 	<h:head>
+	<link rel="stylesheet" type="text/css" href="navbarstyle.css" media="screen" />
 		<title>
 			<ui:insert name="title">
 				Account Management
@@ -11,8 +12,29 @@
 	</h:head>
 	<h:body>
 		<f:event listener="#{loginHandler.checkRangAdmin}" type="preRenderView" />
-		
-		<!-- Navigationsbar einfügen -->
+	<div class="navbar">
+  <a href="startseite.xhtml">Startseite</a>
+  <div class="dropdown">
+    <button class="dropbtn">Meine Nachrichten 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="posteingang.xhtml">Posteingang</a>
+      <a href="postausgang.xhtml">Postausgang</a>
+      <a href="neuenachricht.xhtml">Neue Nachricht</a>
+    </div>
+    </div>
+      <div class="dropdown">
+    <button class="dropbtn">Meine Termine
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="termineanzeigen.xhtml">Meine Termine</a>
+      <a href="neuertermin.xhtml">Termin anlegen</a>
+      <a href="terminentfernen.xhtml">Termin entfernen</a>
+    </div>
+    </div>
+</div><br></br>
 		
 		<h1>Accounts ausgeben</h1>
 		<h:dataTable var="person" value="#{accountHandler.accounts}" rowClasses="odd,even" headerClass="header">

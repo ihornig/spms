@@ -7,6 +7,7 @@
 	<title>Meine Termine</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<link rel="stylesheet" href="resource/navbarstyle.css"/>
 </h:head>
 	<h:body>
 	<f:event listener="#{loginHandler.checkLoggedIn}" type="preRenderView" />
@@ -30,7 +31,6 @@
     <div class="dropdown-content">
       <a href="termineanzeigen.xhtml">Meine Termine</a>
       <a href="neuertermin.xhtml">Termin anlegen</a>
-      <a href="terminentfernen.xhtml">Termin entfernen</a>
     </div>
     </div>
 </div><br></br>
@@ -56,7 +56,16 @@
 						<f:facet name="header">Beschreibung</f:facet>
 						<h:outputText value="#{termin.beschreibung}" />
 					</h:column>
-				</h:dataTable>
+				</h:dataTable><br></br><br></br>
+				<h:form>
+					<h:panelGrid columns="2">
+						<h:outputLabel value="Titel des Termins"/>
+						<h:selectOneMenu value="#{TerminHandler.terminName}">
+						<f:selectItems value="#{TerminHandler.nameholder}"/>
+						</h:selectOneMenu>
+						<h:commandButton action="#{TerminHandler.terminLoeschen()}" value="Löschen" />
+					</h:panelGrid>
+				</h:form>
 			</ui:insert>
 	</h:body>
 </html>

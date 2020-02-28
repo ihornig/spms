@@ -12,6 +12,7 @@ public abstract class Termin_ {
 	public static volatile SingularAttribute<Termin, String> titel;
 	public static volatile SingularAttribute<Termin, String> ende;
 	public static volatile SingularAttribute<Termin, Integer> id;
+	public static volatile SingularAttribute<Termin, String> gruppe;
 	public static volatile SingularAttribute<Termin, String> beschreibung;
 	public static volatile SingularAttribute<Termin, String> beginn;
 

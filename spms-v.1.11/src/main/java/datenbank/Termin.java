@@ -3,13 +3,13 @@ package datenbank;
 import java.io.*;
 import javax.persistence.*;
 
-@NamedQuery(name = "SelectTermin", query = "Select t from Termin t")
+@NamedQuery(name = "SelectTermin", query = "Select k from Termin k")
 @Entity
 
 public class Termin implements Serializable{
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
-		private Integer id;	
+		private Integer id;
 		
 		private String titel;
 		private String datum;

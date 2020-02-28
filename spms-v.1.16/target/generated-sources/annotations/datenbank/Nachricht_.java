@@ -8,9 +8,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Nachricht.class)
 public abstract class Nachricht_ {
 
-	public static volatile SingularAttribute<Nachricht, String> betreff;
+	public static volatile SingularAttribute<Nachricht, String> absender;
 	public static volatile SingularAttribute<Nachricht, Integer> id;
-	public static volatile SingularAttribute<Nachricht, String> empfaenger;
+	public static volatile SingularAttribute<Nachricht, String> gruppe;
 	public static volatile SingularAttribute<Nachricht, String> inhalt;
 
 }

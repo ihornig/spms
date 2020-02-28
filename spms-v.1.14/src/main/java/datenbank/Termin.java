@@ -11,6 +11,7 @@ public class Termin implements Serializable{
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		private Integer id;
 		
+		private String gruppe;
 		private String titel;
 		private String datum;
 		private String beginn;
@@ -18,12 +19,16 @@ public class Termin implements Serializable{
 		private String beschreibung;
 		
 		public Termin() {}
-		public Termin(String titel,String datum,String beginn,String ende,String beschreibung){
+		public Termin(String gruppe,String titel,String datum,String beginn,String ende,String beschreibung){
+			this.gruppe = gruppe;
 			this.titel = titel;
 			this.datum = datum;
 			this.beginn = beginn;
 			this.ende = ende;
 			this.beschreibung = beschreibung;
+		}
+		public void setGruppe(String gruppe) {
+			this.gruppe = gruppe;
 		}
 		public void setTitel(String titel) {
 			this.titel = titel;
@@ -39,6 +44,9 @@ public class Termin implements Serializable{
 		}
 		public void setBeschreibung(String beschreibung) {
 			this.beschreibung = beschreibung;
+		}
+		public String getGruppe() {
+			return gruppe;
 		}
 		public String getTitel() {
 			return titel;

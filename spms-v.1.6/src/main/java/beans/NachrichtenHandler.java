@@ -40,7 +40,6 @@ public class NachrichtenHandler {
 	
 	public void neu() {
 		tempNachricht = new Nachricht();
-		speichern();
 	}
 	
 	@PostConstruct
@@ -65,6 +64,6 @@ public class NachrichtenHandler {
 		try {
 			utx.commit();
 		} catch (Exception exc) {}
+		neu();
 	}
-	
 }

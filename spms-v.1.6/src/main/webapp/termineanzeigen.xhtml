@@ -73,6 +73,7 @@ body {
 </style>
 </h:head>
 	<h:body>
+	<h1>Meine Termine</h1>
 	<div class="navbar">
   <a href="startseite.xhtml">Startseite</a>
   <div class="dropdown">
@@ -96,28 +97,27 @@ body {
     </div>
     </div>
 </div><br></br>
-	<h1>Meine Termine</h1>
 	<ui:insert name="content">
 	<h:dataTable var="termin" value="#{TerminHandler.termine}" rowClasses="odd,even" headerClass="header">
 					<h:column>
 						<f:facet name="header">Titel</f:facet>
-						<h:outputText value="#{Termin.titel}" />
+						<h:outputText value="#{termin.titel}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Datum</f:facet>
-						<h:outputText value="#{Termin.datum}" />
+						<h:outputText value="#{termin.datum}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Beginn</f:facet>
-						<h:outputText value="#{Termin.beginn}" />
+						<h:outputText value="#{termin.beginn}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Ende</f:facet>
-						<h:outputText value="#{Termin.ende}" />
+						<h:outputText value="#{termin.ende}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Beschreibung</f:facet>
-						<h:outputText value="#{Termin.beschreibung}" />
+						<h:outputText value="#{termin.beschreibung}" />
 					</h:column>
 				</h:dataTable>
 			</ui:insert>

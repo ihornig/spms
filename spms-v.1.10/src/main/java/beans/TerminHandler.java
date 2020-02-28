@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
@@ -18,9 +20,11 @@ public class TerminHandler {
 	
 	@Resource
 	private UserTransaction utx;
-	
 	private DataModel<Termin> termine;
-	private Termin tempTermin = new Termin();
+	private Termin tempTermin;
+	private String terminName;
+	
+	private List<String> nameholder = new ArrayList<String>();
 	
 	public DataModel<Termin> getTermine(){
 		return termine;
@@ -67,7 +71,48 @@ public class TerminHandler {
 		neu();
 	}
 	
-	public void entfernen(String titel) {
+	public void TerminLoeschen() {
+			boolean found = false;
+			int i = 0;
+			while(!found && i < termine.getRowCount()) {
+				termine.setRowIndex(i);
+				tempTermin = termine.getRowData();
+				if(tempTermin.getTitel().equals(terminName)) {
+					found = true;
+				}
+			}
+			try {
+				utx.begin();
+			} catch (Exception exc) {}
+			tempTermin = em.merge(tempTermin);
+			em.remove(tempTermin);
+			termine.setWrappedData(em.createNamedQuery("SelectTermin").getResultList());
+			try {
+				utx.commit();
+			} catch (Exception exc) {}
+			updateNameholder();
+	}
 	
+	public String getTerminName() {
+		return terminName;
+	}
+	
+	public void setTerminName(String terminName) {
+		this.terminName = terminName;
+	}
+	
+	public void updateNameholder() {
+		nameholder.clear();
+		for(Termin termin : termine) {
+			nameholder.add(termin.getTitel());
+		}
+	}
+	
+	public void setNameholder(List<String> name) {
+		nameholder = name;
+	}
+	
+	public List<String> getNameholder(){
+		return nameholder;
 	}
 }
