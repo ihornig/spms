@@ -1,0 +1,29 @@
+.Table {   
+   border-collapse:collapse;
+   border:1px solid #000000;
+}
+
+.TableHeader {
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.TableOdd {
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFFF;	
+}
+
+.TableEven {
+   text-align:center;
+   background:none repeat scroll 0 0 #D3D3D3;
+}
+
+#terminenachrechts{
+	float: right;
+}
+
+#nachrichtennachrechts{
+	float: right;
+}
