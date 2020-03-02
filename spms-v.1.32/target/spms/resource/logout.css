@@ -1,0 +1,22 @@
+.logout{
+	width: 100%;
+  	padding: 7px;
+	border: none;
+  	border-radius: 5px;
+  	color: white;
+  	font-weight: bold;
+  	background-color: #3a3a3a;
+  	cursor: pointer;
+  	outline: none;
+}
+
+@media all and (min-width: 40em) {
+  .teaser {
+    width: 50%;
+  }
+}
+@media all and (min-width: 60em) {
+  .teaser {
+    width: 33.33%;
+  }
+}
