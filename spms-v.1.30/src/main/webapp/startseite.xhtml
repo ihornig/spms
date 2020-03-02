@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+<h:head>
+	<title>Startseite</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="resource/navbarstyle.css" />
+	<link rel="stylesheet" href="resource/verwaltung.css"/>
+</h:head>
+<h:body>
+	<f:event listener="#{loginHandler.checkLoggedIn}" type="preRenderView" />
+	<h1>Willkommen im SPMS</h1>
+	<div class="navbar">
+		<a href="startseite.xhtml">Startseite</a> 
+		<a href="gruppen.xhtml">Gruppen</a>
+		<a href="gruppenVerwaltung.xhtml">Gruppenverwaltung</a> 
+		<a href="userManagement.xhtml">Benutzerverwaltung</a>
+	</div>
+	<br />
+	<section class="teaser-section">
+  	<article class="teaser">
+    <div class="teaser--content">
+	<h:dataTable var="user" value="#{loginHandler.kunde}">
+		<f:facet name="header">Mein Account:</f:facet>
+		<h:column>
+			<f:facet name="header">Benutzername</f:facet>
+			<h:outputText value="#{user.username}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Rolle</f:facet>
+			<h:outputText value="#{user.rolle}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Gruppen</f:facet>
+			<h:selectOneMenu value="temp">
+				<f:selectItems value="#{user.gruppen}" />
+			</h:selectOneMenu>
+		</h:column>
+	</h:dataTable>
+	<h:form>
+		<h:commandButton action="#{loginHandler.logout}" value="logout" />
+	</h:form>
+	</div>
+	</article>
+	</section>
+</h:body>
+</html>
