@@ -1,0 +1,71 @@
+@charset "ISO-8859-1";
+
+body {
+  background-color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.4em;
+}
+
+.inputfeld{
+}
+
+
+.button{
+	width: 100%;
+  	padding: 7px;
+  	border: none;
+  	border-radius: 5px;
+  	color: white;
+  	font-weight: bold;
+  	background-color: #3a3a3a;
+  	cursor: pointer;
+  	outline: none;
+}
+
+.logoutbutton{
+  	padding-top: 15px;
+  	border: none;
+  	border-radius: 5px;
+  	color: white;
+  	font-weight: bold;
+  	background-color: #3a3a3a;
+  	cursor: pointer;
+  	outline: none;
+}
+
+.teaser {
+	display: flex; 
+  padding: 0.5em;
+	width: 100%;
+}
+
+@media all and (min-width: 40em) {
+  .teaser {
+    width: 50%;
+  }
+}
+@media all and (min-width: 60em) {
+  .teaser {
+    width: 33.33%;
+  }
+}
+
+.teaser-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.teaser--content {
+	background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+	width: 100%;
+}
+.teaser--content p {
+	flex: 1 0 auto;
+}
