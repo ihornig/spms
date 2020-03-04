@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+<h:head>
+<link rel="stylesheet" href="resource/verwaltung.css" />
+	<link rel="stylesheet" type="text/css" href="resource/navbarstyle.css"
+		media="screen" />
+	<link rel="stylesheet" type="text/css" href="resource/tablestyle.css"
+		media="screen" />
+	<title>Gruppen</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+</h:head>
+<h:body>
+	<f:event listener="#{loginHandler.updateAccount}" type="preRenderView"/>
+	<f:event listener="#{loginHandler.checkLoggedIn}" type="preRenderView" />
+	<h1>Meine Gruppen</h1>
+	<div class="navbar">
+		<a href="startseite.xhtml">Startseite</a> <a href="gruppen.xhtml">Gruppen</a>
+		<a href="gruppenVerwaltung.xhtml">Gruppenverwaltung</a> 
+		<a href="userManagement.xhtml">Benutzerverwaltung</a>
+		<h:form><h:commandButton action="#{loginHandler.logout}" value="Logout" styleClass="logoutbutton"/></h:form>
+	</div>
+	<br />
+	<section class="teaser-section">
+  	<article class="teaser">
+    <div class="teaser--content">
+		<ui:insert name="content">
+			<h1>Termine</h1>
+			<br></br>
+			<h:dataTable var="termin" value="#{TerminHandler.eigeneTermine}"
+				styleClass="Table" rowClasses="TableOdd,TableEven"
+				headerClass="TableHeader">
+				<h:column>
+					<f:facet name="header">Gruppe</f:facet>
+					<h:outputText value="#{termin.gruppe}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Autor</f:facet>
+					<h:outputText value="#{termin.autor}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Titel</f:facet>
+					<h:outputText value="#{termin.titel}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Datum</f:facet>
+					<h:outputText value="#{termin.datum}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Beginn</f:facet>
+					<h:outputText value="#{termin.beginn}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Ende</f:facet>
+					<h:outputText value="#{termin.ende}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Beschreibung</f:facet>
+					<h:outputText value="#{termin.beschreibung}" />
+				</h:column>
+			</h:dataTable>
+		</ui:insert>
+	</div>
+  </article>
+  
+   <article class="teaser">
+    <div class="teaser--content">
+		<ui:insert name="content">
+			<h1>Gruppenchat</h1>
+			<h:dataTable var="nachricht"
+				value="#{NachrichtenHandler.eigeneNachrichten}" styleClass="Table"
+				rowClasses="TableOdd,TableEven" headerClass="TableHeader">
+				<h:column>
+					<f:facet name="header">Gruppe</f:facet>
+					<h:outputText value="#{nachricht.gruppe}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Absender</f:facet>
+					<h:outputText value="#{nachricht.absender}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Inhalt</f:facet>
+					<h:outputText value="#{nachricht.inhalt}" />
+				</h:column>
+			</h:dataTable>
+		</ui:insert>
+	</div>
+  </article>
+  
+   <article class="teaser">
+    <div class="teaser--content">
+	<h:form>
+		<h1>Termin anlegen</h1>
+		<h:panelGrid var="termin" value="#{Termin}" columns="2"
+			headerClass="header" footerClass="footer">
+			<h:outputLabel value="Gruppe"/>
+			<h:panelGroup>
+				<h:selectOneMenu value="#{TerminHandler.tempTermin.gruppe}">
+					<f:selectItems value="#{loginHandler.kunde.gruppen}"/>
+				</h:selectOneMenu>
+			</h:panelGroup>
+			<h:outputLabel value="Titel" for="titel" />
+			<h:panelGroup>
+				<h:inputText id="titel" value="#{TerminHandler.tempTermin.titel}"
+					required="true" requiredMessage="Eingabe fehlt" styleClass="inputfeld"/>
+			</h:panelGroup>
+			<h:outputLabel value="Datum" for="datum" />
+			<h:panelGroup>
+				<h:inputText id="datum" value="#{TerminHandler.tempTermin.datum}"
+					required="true" requiredMessage="Eingabe fehlt" styleClass="inputfeld"/>
+			</h:panelGroup>
+			
+			<h:outputLabel value="Beginn" for="beginn" />
+			
+			<h:panelGroup>
+				<h:inputText id="beginn" value="#{TerminHandler.tempTermin.beginn}"
+					required="true" requiredMessage="Eingabe fehlt" styleClass="inputfeld"/>
+			</h:panelGroup>
+			
+			<h:outputLabel value="Ende" for="ende" />
+			
+			<h:panelGroup>
+				<h:inputText id="ende" value="#{TerminHandler.tempTermin.ende}"
+					required="true" requiredMessage="Eingabe fehlt" styleClass="inputfeld"/>
+			</h:panelGroup>
+			
+			<h:outputLabel value="Beschreibung" for="beschreibung" />
+			
+			<h:panelGroup>
+				<h:inputText id="beschreibung"
+					value="#{TerminHandler.tempTermin.beschreibung}" required="true"
+					requiredMessage="Eingabe fehlt" styleClass="inputfeld"/>
+			</h:panelGroup>
+		</h:panelGrid>
+		<h:commandButton actionListener="#{TerminHandler.speichern}" value="Senden" styleClass="button">
+			<f:attribute name="username" value="#{loginHandler.kunde.getUsername()}"/>
+		</h:commandButton>
+	</h:form>
+	<br></br>
+	</div>
+  </article>
+  
+  <article class="teaser">
+    <div class="teaser--content">
+	<div id="content">
+		<ui:insert name="content">
+			<h1>Nachricht schreiben</h1>
+			<br></br>
+			<h:form>
+				<h:panelGrid var="nachricht" value="#{Nachricht}" columns="2"
+					headerClass="header" footerClass="footer">
+					<h:outputLabel value="Gruppe"/>
+					<h:panelGroup>
+						<h:selectOneMenu value="#{NachrichtenHandler.tempNachricht.gruppe}">
+							<f:selectItems value="#{loginHandler.kunde.gruppen}"/>
+						</h:selectOneMenu>
+					</h:panelGroup>
+					<h:outputLabel value="Inhalt" for="inhalt" />
+					<h:panelGroup>
+						<h:inputText id="inhalt"
+							value="#{NachrichtenHandler.tempNachricht.inhalt}" styleClass="inputfeld"/>
+					</h:panelGroup>
+				</h:panelGrid>
+				<br></br>
+				<h:commandButton actionListener="#{NachrichtenHandler.speichern}" value="Senden" styleClass="button">
+						<f:attribute name="username" value="#{loginHandler.kunde.getUsername()}"/>
+				</h:commandButton>
+			</h:form>
+		</ui:insert>
+	</div>
+	</div>
+  </article>
+  
+   <article class="teaser">
+    <div class="teaser--content">
+	<h:form>
+		<h1>Termin löschen</h1>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Gruppenname"/>
+			<h:selectOneMenu value="#{TerminHandler.gruppe}">
+				<f:selectItems value="#{loginHandler.kunde.getGruppen()}"/>
+			</h:selectOneMenu>
+			<h:outputLabel value="Titel des Termins" />
+			<h:selectOneMenu value="#{TerminHandler.terminName}">
+				<f:selectItems value="#{TerminHandler.nameholder}" />
+			</h:selectOneMenu>
+			<h:commandButton action="#{TerminHandler.terminLoeschen()}"
+				value="Löschen" styleClass="button"/>
+		</h:panelGrid>
+	</h:form>
+	<br></br>
+	<br></br>
+	</div>
+  </article>
+  </section>
+</h:body>
+</html>

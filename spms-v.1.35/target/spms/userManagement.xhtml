@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<h:head>
+	<title><ui:insert name="title">Account Management</ui:insert></title>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="resource/navbarstyle.css" />
+	<link rel="stylesheet" href="resource/verwaltung.css" />
+</h:head>
+<h:body>
+	<f:event listener="#{loginHandler.updateAccount}" type="preRenderView" />
+	<f:event listener="#{loginHandler.checkRangAdmin}" type="preRenderView" />
+	<h1>Benutzerverwaltung</h1>
+	<div class="navbar">
+		<a href="startseite.xhtml">Startseite</a> <a href="gruppen.xhtml">Gruppen</a>
+		<a href="gruppenVerwaltung.xhtml">Gruppenverwaltung</a> 
+		<a href="userManagement.xhtml">Benutzerverwaltung</a>
+		<h:form><h:commandButton action="#{loginHandler.logout}" value="Logout" styleClass="logoutbutton"/></h:form>
+	</div>
+	<br/>
+	<section class="teaser-section">
+  	<article class="teaser">
+    <div class="teaser--content">
+	<h1>Accounts ausgeben</h1>
+	<h:dataTable var="person" value="#{accountHandler.accounts}"
+		rowClasses="odd,even" headerClass="header">
+		<f:facet name="header">Personen</f:facet>
+		<h:column>
+			<f:facet name="header">Benutzername</f:facet>
+			<div align="center">
+			<h:outputText value="#{person.username}" />
+			</div>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Rolle</f:facet>
+			<div align="center">
+			<h:outputText value="#{person.rolle}" />
+			</div>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Gruppen</f:facet>
+			<div align="center">
+			<h:selectOneMenu value="temp">
+				<f:selectItems value="#{person.gruppen}" />
+			</h:selectOneMenu>
+			</div>
+		</h:column>
+	</h:dataTable>
+	</div>
+  </article>
+   <article class="teaser">
+    <div class="teaser--content">
+	<h1>Account löschen</h1>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Benutzername" />
+			<h:selectOneMenu value="#{accountHandler.userName}">
+				<f:selectItems value="#{accountHandler.nameholder}" />
+			</h:selectOneMenu>
+			<h:commandButton action="#{accountHandler.accountLoeschen()}"
+				value="Löschen" styleClass="button"/>
+		</h:panelGrid>
+	</h:form>
+	</div>
+  </article>
+  <article class="teaser">
+    <div class="teaser--content">
+	<h1>Rolle ändern</h1>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Benutzer" />
+			<h:selectOneMenu value="#{accountHandler.userName}">
+				<f:selectItems value="#{accountHandler.nameholder}" />
+			</h:selectOneMenu>
+			<h:outputLabel value="Rolle" />
+			<h:selectOneMenu value="#{accountHandler.groupName}">
+				<f:selectItem itemValue="user" />
+				<f:selectItem itemValue="verwalter" />
+				<f:selectItem itemValue="admin" />
+			</h:selectOneMenu>
+			<h:commandButton action="#{accountHandler.rolleAendern()}"
+				value="Ändern" styleClass="button"/>
+		</h:panelGrid>
+	</h:form>
+	 </div>
+  </article>
+  </section>
+</h:body>
+</html>
